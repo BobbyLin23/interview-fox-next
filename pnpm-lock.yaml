@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
   '@types/node':
@@ -31,6 +35,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+  tailwind-merge:
+    specifier: ^1.12.0
+    version: registry.npmmirror.com/tailwind-merge@1.12.0
   tailwindcss:
     specifier: 3.3.2
     version: registry.npmmirror.com/tailwindcss@3.3.2
@@ -3173,6 +3180,12 @@ packages:
     dependencies:
       '@pkgr/utils': registry.npmmirror.com/@pkgr/utils@2.4.1
       tslib: registry.npmmirror.com/tslib@2.5.2
+    dev: false
+
+  registry.npmmirror.com/tailwind-merge@1.12.0:
+    resolution: {integrity: sha512-Y17eDp7FtN1+JJ4OY0Bqv9OA41O+MS8c1Iyr3T6JFLnOgLg3EvcyMKZAnQ8AGyvB5Nxm3t9Xb5Mhe139m8QT/g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tailwind-merge/-/tailwind-merge-1.12.0.tgz}
+    name: tailwind-merge
+    version: 1.12.0
     dev: false
 
   registry.npmmirror.com/tailwindcss@3.3.2:
