@@ -1,5 +1,7 @@
 import Header from "@/components/Header";
+import StartButton from "@/components/StartButton";
 import Button from "@/components/common/Button";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -12,14 +14,15 @@ export default function Home() {
         </div>
         <div className="flex items-center justify-center gap-4 px-4">
           <div>Powered By</div>
-          <img src="/next.svg " alt="next" className="w-20 h-20" />
-          <img src="/tailwind.svg" alt="tailwind" className="w-10 h-10" />
-          <img src="/vercel.svg" alt="vercel" className="w-20 h-20" />
-          <img src="/openai.svg" alt="openai" className="w-10 h-10" /> 
+          <Image src="/next.svg" alt="next" width={80} height={80} />
+          <Image src="/tailwind.svg" alt="tailwind" width={50} height={50}/>
+          <Image src="/vercel.svg" alt="vercel" width={80} height={80} />
+          <Image src="/openai.svg" alt="openai" width={50} height={50} /> 
         </div>
       </section>
       <div className="w-full flex justify-center items-center">
-        <Button className="w-1/4 text-white">Get Started!</Button>
+        {/* <Button className="w-1/4 text-white bg-sky-500 hover:bg-sky-400">Get Started!</Button> */}
+        <StartButton />
       </div>
     </main>
   );

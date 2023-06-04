@@ -2,8 +2,12 @@
 
 import useRegisterModal from '@/hooks/useRegisterModal'
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
+import { useSupabase } from '@/providers/SupabaseProvider'
 
 interface LoginModalProps {
   isOpen: boolean
@@ -12,10 +16,43 @@ interface LoginModalProps {
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const registerModal = useRegisterModal()
+  const router = useRouter()
+  const { supabaseClient } = useSupabase()
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const toggleRegisterModal = () => {
     registerModal.open()
     onClose()
+  }
+
+  const { register, handleSubmit, reset } = useForm<FieldValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  })
+
+  const onSubmit: SubmitHandler<FieldValues> = async (values: FieldValues) => {
+    try {
+      setIsLoading(true)
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      })
+      if (error) {
+        toast.error(error.message)
+      } else {
+        toast.success('Sign in successful!')
+        router.push('/dashboard')
+        onClose()
+        reset()
+      }
+    } catch {
+      toast.error('Something went wrong!')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -56,7 +93,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   />
                 </Dialog.Title>
                 <div className="mt-4">
-                  <form className="space-y-6">
+                  <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                     <div>
                       <label
                         htmlFor="email"
@@ -67,11 +104,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                       <div className="mt-2">
                         <input
                           id="email"
-                          name="email"
                           type="email"
                           autoComplete="email"
                           required
                           className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                          {...register('email')}
                         />
                       </div>
                     </div>
@@ -84,18 +121,17 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                       </label>
                       <input
                         id="password"
-                        name="password"
                         type="password"
                         autoComplete="current-password"
                         required
                         className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                        {...register('password')}
                       />
                     </div>
                     <div className="w-full flex flex-col gap-y-4">
                       <button
                         type="submit"
                         className="inline-flex justify-center rounded-md border border-transparent bg-sky-300 px-4 py-2 text-sm font-medium text-sky-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        onClick={() => {}}
                       >
                         Confirm
                       </button>

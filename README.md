@@ -2,3 +2,4 @@
 
 - Next.JS
 - Tailwind CSS
+- Supabase
