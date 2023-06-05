@@ -1,12 +1,9 @@
-import Header from "@/components/Header";
 import StartButton from "@/components/StartButton";
-import Button from "@/components/common/Button";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <main>
-      <Header />
       <section className="w-full h-auto flex items-center justify-around py-[200px]">
         <div>
           <div className="mb-2 text-4xl font-bold">Interview Fox</div>
@@ -21,7 +18,6 @@ export default function Home() {
         </div>
       </section>
       <div className="w-full flex justify-center items-center">
-        {/* <Button className="w-1/4 text-white bg-sky-500 hover:bg-sky-400">Get Started!</Button> */}
         <StartButton />
       </div>
     </main>
