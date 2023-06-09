@@ -19,7 +19,7 @@ const Interview = () => {
   }
 
   return (
-    <div className="w-full h-[85vh] shadow bg-neutral-100 flex">
+    <div className="w-full h-[88vh] shadow bg-neutral-50 flex">
       <QuestionsList />
       <Chat />
       <Information />

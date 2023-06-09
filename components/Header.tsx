@@ -1,7 +1,6 @@
 'use client'
 
 import useLoginModal from '@/hooks/useLoginModal'
-import Image from 'next/image'
 import LoginModal from './modal/LoginModal'
 import RegisterModal from './modal/RegisterModal'
 import useRegisterModal from '@/hooks/useRegisterModal'

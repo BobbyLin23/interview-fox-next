@@ -1,6 +1,6 @@
 'use client'
 
-import { Disclosure, Menu } from "@headlessui/react"
+import { Disclosure } from "@headlessui/react"
 import { usePathname } from "next/navigation"
 import { twMerge } from "tailwind-merge";
 

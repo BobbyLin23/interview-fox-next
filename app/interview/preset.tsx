@@ -1,7 +1,12 @@
 'use client'
 
 import Button from '@/components/common/Button'
+import Select from '@/components/common/Select'
 import useInterviewStep from '@/hooks/useInterviewStep'
+
+const positionList = ['Front End Developer', 'Back End Developer']
+
+const levelList = ['Intern', 'Junior', 'Senior', 'Expert']
 
 const Preset = () => {
   const interviewStep = useInterviewStep()
@@ -29,7 +34,7 @@ const Preset = () => {
         </p>
 
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          <div className="col-span-3">
+          <div className="col-span-4">
             <label
               htmlFor="position"
               className="block text-sm font-medium leading-6 text-gray-900"
@@ -37,16 +42,19 @@ const Preset = () => {
               Position
             </label>
             <div className="mt-2">
-              <select
-                id="position"
-                name="poistion"
-                autoComplete="position-name"
-                className="block w-full rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:max-w-xs sm:text-sm sm:leading-6"
-              >
-                <option>Front End Developer</option>
-                <option>Back End Developer</option>
-                <option>Full Stack Developer</option>
-              </select>
+              <Select lists={positionList} />
+            </div>
+          </div>
+
+          <div className="col-span-4">
+            <label
+              htmlFor="level"
+              className="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Level
+            </label>
+            <div className="mt-2">
+              <Select lists={levelList} />
             </div>
           </div>
 
@@ -90,7 +98,9 @@ const Preset = () => {
           </div>
         </div>
         <div>
-          <Button className='mt-12' onClick={goNext}>Next</Button>
+          <Button className="mt-12" onClick={goNext}>
+            Next
+          </Button>
         </div>
       </div>
     </form>
