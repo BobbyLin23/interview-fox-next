@@ -8,6 +8,9 @@ const Chat = () => {
   return (
     <div className="flex-1 relative">
       <div className="p-4 border-b text-sm">Interview Chat</div>
+      <div className='w-full p-4 overflow-y-auto'>
+        1234
+      </div>
       {!showInput ? (
         <div
           className="absolute w-full border-t bottom-0 px-6 py-3 cursor-pointer text-neutral-400"
@@ -16,9 +19,9 @@ const Chat = () => {
           <span>Please Input...</span>
         </div>
       ) : (
-        <Transition
+        <Transition.Root
           show={showInput}
-          enter="transition-opacity duration-75"
+          enter="transition-opacity ease-linear duration-75"
           enterFrom="opacity-0"
           enterTo="opacity-100"
           leave="transition-opacity duration-150"
@@ -34,13 +37,12 @@ const Chat = () => {
               cols={10}
             />
             <div className='w-full flex items-center justify-end py-2 px-4'>
-              <div className='border p-1 rounded cursor-pointer'>
-                <AiOutlineSend className='w-6 h-6 text-neutral-500 hover:text-neutral-800' />
+              <div className='border p-1 rounded cursor-pointer text-neutral-500 hover:text-neutral-800 hover:bg-neutral-300'>
+                <AiOutlineSend className='w-6 h-6' />
               </div>
-              
             </div>
           </div>
-        </Transition>
+        </Transition.Root>
       )}
     </div>
   )

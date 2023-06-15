@@ -1,15 +1,8 @@
+'use client'
+
 import { Listbox, Transition } from '@headlessui/react'
 import { useState, Fragment } from 'react'
 import { HiOutlineChevronUpDown, HiCheck } from 'react-icons/hi2'
-
-const people = [
-  { name: 'Wade Cooper' },
-  { name: 'Arlene Mccoy' },
-  { name: 'Devon Webb' },
-  { name: 'Tom Cook' },
-  { name: 'Tanya Fox' },
-  { name: 'Hellen Schmidt' },
-]
 
 interface SelectProps {
   lists: string[]

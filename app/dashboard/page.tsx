@@ -2,9 +2,9 @@ import { getSession } from '@/libs/supabase-server'
 import { redirect } from 'next/navigation'
 
 const stats = [
-  { id: 1, name: 'Transactions every 24 hours', value: '44 million' },
-  { id: 2, name: 'Assets under holding', value: '$119 trillion' },
-  { id: 3, name: 'New users annually', value: '46,000' },
+  { id: 1, name: 'Interview Counts', value: '0' },
+  { id: 2, name: 'Interview Time', value: '0 Minutes' },
+  { id: 3, name: 'Average Points', value: '0.00' },
 ]
 
 export default async function Page() {
